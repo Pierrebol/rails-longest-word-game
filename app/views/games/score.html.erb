@@ -1,4 +1,6 @@
 <h1>RESULTS</h1>
 
-<%= @result %><br>
+<%= @result[:message] %><br>
+<p class="answer">Your score is: <%= @result[:score] %><br></p>
+
 <%= link_to "Play again", new_path %>

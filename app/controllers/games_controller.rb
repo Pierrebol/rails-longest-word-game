@@ -13,12 +13,13 @@ class GamesController < ApplicationController
   end
 
   def score
-    @result = 'It is not in the grid'
+    @result = { score: 0, message: 'It is not in the grid' }
     @attempt_letters = params[:word].upcase.split('')
     @letters = params[:letters]
     if @attempt_letters.all? { |letter| @attempt_letters.count(letter) <= @letters.count(letter) }
       if english_word?(params[:word])['found'] == true
-        @result = 'Well Done!'
+        @result[:score] = @attempt_letters.size
+        @result[:message] = "Well Done!"
       else @result = 'It is not an english word'
       end
       @result
